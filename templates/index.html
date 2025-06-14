@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Liste des livres disponibles</h2>
+{% for book in books %}
+<div class="book-card" style="position: relative;">
+    <form method="post" action="{{ url_for('delete_book', book_id=book.id) }}" style="position: absolute; top: 10px; right: 10px;">
+        <button type="submit" class="delete-btn">🗑</button>
+    </form>
+    <h3>{{ book.title }}</h3>
+    <p><strong>Auteur :</strong> {{ book.author }}</p>
+    <p>{{ book.description }}</p>
+    <p><strong>État :</strong> {{ book.etat }} |
+       <strong>Priorité :</strong> {{ book.priorite }} |
+       <strong>Réf :</strong> {{ book.ref_number }}</p>
+    {% if book.status == 'disponible' %}
+        <form action="{{ url_for('borrow_book', book_id=book.id) }}" method="post">
+            <button type="submit">Emprunter</button>
+        </form>
+    {% else %}
+        <button disabled>Déjà emprunté</button>
+    {% endif %}
+</div>
+
+{% else %}
+    <p style="text-align:center;">Aucun livre pour le moment.</p>
+{% endfor %}
+{% endblock %}
