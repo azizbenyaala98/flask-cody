@@ -55,13 +55,14 @@ def borrow_book(book_id):
     save_books(books)
     return redirect(url_for('index'))
 
-@app.route('/delete/<book_id>', methods=['POST'])
+
+@app.route('/delete/<int:book_id>', methods=['POST'])
 def delete_book(book_id):
+    print(f"Suppression du livre avec ID: {book_id}")
     books = load_books()
     books = [b for b in books if b['id'] != book_id]
     save_books(books)
     return redirect(url_for('index'))
-    
 
 
 if __name__ == '__main__':
