@@ -7,62 +7,57 @@ BOOKS_FILE = 'books.json'
 
 
 def load_books():
-    if not os.path.exists(BOOKS_FILE):
-        return []
-    with open(BOOKS_FILE, 'r') as f:
-        return json.load(f)
+    """
+    Charger les livres depuis le fichier JSON.
+    Retourner une liste vide si le fichier n'existe pas.
+    """
+    # À compléter par l'élève
+    pass
 
 
 def save_books(books):
-    with open(BOOKS_FILE, 'w') as f:
-        json.dump(books, f, indent=4)
+    """
+    Enregistrer les livres dans le fichier JSON.
+    """
+    # À compléter par l'élève
+    pass
 
 
 @app.route('/')
 def index():
-    books = load_books()
-    return render_template('index.html', books=books)
+    """
+    Page d'accueil : afficher la liste des livres.
+    """
+    # À compléter par l'élève
+    pass
 
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_book():
-    if request.method == 'POST':
-        books = load_books()
-        new_id = max([b['id'] for b in books], default=0) + 1
-        new_book = {
-            "id": new_id,
-            "title": request.form['title'],
-            "author": request.form['author'],
-            "description": request.form['description'],
-            "etat": request.form['etat'],
-            "priorite": request.form['priorite'],
-            "ref_number": request.form['ref_number'],
-            "status": "disponible"
-        }
-        books.append(new_book)
-        save_books(books)
-        return redirect(url_for('index'))
-    return render_template('add_book.html')
+    """
+    Affiche le formulaire d'ajout d'un livre (GET)
+    ou enregistre un nouveau livre (POST).
+    """
+    # À compléter par l'élève
+    pass
 
 
 @app.route('/borrow/<int:book_id>', methods=['POST'])
 def borrow_book(book_id):
-    books = load_books()
-    for book in books:
-        if book['id'] == book_id and book['status'] == 'disponible':
-            book['status'] = 'emprunté'
-            break
-    save_books(books)
-    return redirect(url_for('index'))
+    """
+    Permet d'emprunter un livre s'il est disponible.
+    """
+    # À compléter par l'élève
+    pass
 
 
 @app.route('/delete/<int:book_id>', methods=['POST'])
 def delete_book(book_id):
-    print(f"Suppression du livre avec ID: {book_id}")
-    books = load_books()
-    books = [b for b in books if b['id'] != book_id]
-    save_books(books)
-    return redirect(url_for('index'))
+    """
+    Supprimer un livre de la collection.
+    """
+    # À compléter par l'élève
+    pass
 
 
 if __name__ == '__main__':

@@ -1,33 +1,33 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <h2>Ajouter un nouveau livre</h2>
+
+<!-- Formulaire d'ajout d'un livre -->
 <form method="post">
-    <label>Titre:</label>
-    <input type="text" name="title" required><br>
+    
+    <!-- Titre du livre -->
+    <!-- TODO: Créer un champ input de type texte avec le nom 'title' -->
+    <!-- Exemple attendu : <input type="text" name="title" required> -->
+    
+    <!-- Auteur -->
+    <!-- TODO: Créer un champ input de type texte avec le nom 'author' -->
 
-    <label>Auteur:</label>
-    <input type="text" name="author" required><br>
+    <!-- Description -->
+    <!-- TODO: Créer un champ textarea avec le nom 'description' -->
 
-    <label>Description:</label>
-    <textarea name="description" required></textarea><br>
+    <!-- État du livre (neuf, bon, usé) -->
+    <!-- TODO: Créer un menu déroulant (select) nommé 'etat' avec les 3 options -->
 
-    <label>État:</label>
-    <select name="etat">
-        <option value="neuf">Neuf</option>
-        <option value="bon">Bon</option>
-        <option value="usé">Usé</option>
-    </select><br>
+    <!-- Priorité de lecture (normale, haute, très haute) -->
+    <!-- TODO: Créer un autre select nommé 'priorite' -->
 
-    <label>Priorité:</label>
-    <select name="priorite">
-        <option value="normale">Normale</option>
-        <option value="haute">Haute</option>
-        <option value="très haute">Très haute</option>
-    </select><br>
+    <!-- Numéro de référence -->
+    <!-- TODO: Créer un champ input de type texte avec le nom 'ref_number' -->
 
-    <label>Numéro de référence:</label>
-    <input type="text" name="ref_number" required><br>
+    <!-- Bouton d’envoi -->
+    <!-- TODO: Ajouter un bouton de type submit avec le texte "Ajouter" -->
 
-    <button type="submit">Ajouter</button>
 </form>
+
 {% endblock %}
